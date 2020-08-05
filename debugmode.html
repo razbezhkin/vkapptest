@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <script src="https://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        VK.init(function () {
+            // API initialization succeeded
+            // Your code here
+            console.log("Init success");
+        }, function () {
+            // API initialization failed
+            // Can reload page here
+            console.log("Init fail");
+        }, '5.122');
+    </script>
+</head>
+
+<body>
+    <h1>Debug</h1>
+    <button onclick="test1()">Test1</button>
+
+
+    <script>
+        function test1() {
+            VK.api("wall.post", { "message": "Hello!", "v": "5.122" }, function (data) {
+                console.log(data);
+            });
+        }
+    </script>
+</body>
+
+</html>
