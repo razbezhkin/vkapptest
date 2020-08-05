@@ -21,17 +21,32 @@
 <body>
     <h1>Debug</h1>
     <div>
-    <textarea id="text" rows=8 cols=100></textarea>
-</div>
+        <textarea id="text" rows=8 cols=100></textarea>
+    </div>
     <button onclick="test1()">Test1</button>
+    <button onclick="utest1()">UTest1</button>
 
 
     <script>
         function test1() {
-            var text=$("#text").val();
+            var text = $("#text").val();
             VK.api("wall.post", { "message": text, "v": "5.122" }, function (data) {
                 console.log(data);
             });
+        }
+
+        function utest1() {
+            $.get(
+                "http://localhost:64485/RedGoods/Get",
+                {
+                    serialid: 3215,
+                    rednumber: 523
+                },
+                function(r)
+                {
+                    console.log(r);
+                }
+            );
         }
     </script>
 </body>
