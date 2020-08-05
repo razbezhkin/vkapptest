@@ -1,0 +1,103 @@
+<html>
+<head>
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <iframe src="login.html">
+    </iframe>
+
+    <hr />
+
+    <a href="https://oauth.vk.com/authorize?client_id=7557834&display=page&scope=8192&response_type=token&redirect_uri=https%3A%2F%2Foauth.vk.com%2Fblank.html&revoke=1">login to blank</a>
+    <a href="https://oauth.vk.com/authorize?client_id=7557834&display=page&scope=8192&response_type=token&redirect_uri=http%3A%2F%2Flocalhost%3A64485%2Ftest21%2Findex.html&revoke=1">login to this</a>
+
+
+    <hr />
+    
+    <a href="https://oauth.vk.com/authorize?client_id=7557091&display=page&scope=8192&response_type=token&redirect_uri=https%3A%2F%2Foauth.vk.com%2Fblank.html&revoke=1">login to blank</a>
+    <a href="https://oauth.vk.com/authorize?client_id=7557091&display=page&scope=8192&response_type=token&redirect_uri=http%3A%2F%2Flocalhost%3A64485%2Ftest21%2Findex.html&revoke=1">login to this</a>
+
+    <div style="border: 1px solid black; padding: 5px">
+        <div>
+            <input type="text" id="access_token" /> - access_token
+        </div>
+        <div>
+            <input type="text" id="userid" value="376327262" /> -userid
+        </div>
+        <div>
+            <input type="text" id="message" value="" /> -message
+        </div>
+        <div>
+            <button onclick="test1()">users.get</button>
+        </div>
+        <div>
+            <button onclick="test2()">wall.get</button>
+        </div>
+        <div>
+            <button onclick="test3()">wall.post</button>
+        </div>
+        <div>
+            <button onclick="test4()">AJAX POST wall.post</button>
+        </div>
+    </div>
+
+    <script>
+        function test1() {
+            var uid = $("#userid").val();
+            var at = $("#access_token").val();
+            console.log(uid);
+            console.log(at);
+            var script = document.createElement('SCRIPT');
+            script.src = `https://api.vk.com/method/users.get?user_ids=${uid}&fields=bdate&access_token=${at}&v=5.122&callback=test1cb`;
+            document.getElementsByTagName("head")[0].appendChild(script);
+        }
+
+        function test1cb(r) {
+            console.log(r);
+        }
+
+        function test2() {
+            var uid = $("#userid").val();
+            var at = $("#access_token").val();
+            console.log(uid);
+            console.log(at);
+            var script = document.createElement('SCRIPT');
+            script.src = `https://api.vk.com/method/wall.get?owner_id=${uid}&count=5&access_token=${at}&v=5.122&callback=test1cb`;
+            document.getElementsByTagName("head")[0].appendChild(script);
+        }
+
+        function test3() {
+            var uid = $("#userid").val();
+            var at = $("#access_token").val();
+            var message = $("#message").val();
+            console.log(uid);
+            console.log(at);
+            var script = document.createElement('SCRIPT');
+            script.src = `https://api.vk.com/method/wall.post?owner_id=${uid}&message=${message}&access_token=${at}&v=5.122&callback=test1cb`;
+            document.getElementsByTagName("head")[0].appendChild(script);
+        }
+
+        function test4() {
+            var uid = $("#userid").val();
+            var at = $("#access_token").val();
+            var message = $("#message").val();
+
+            $.ajax({
+                url: 'https://api.vk.com/method/wall.post',
+                method: 'post',
+                dataType: 'json',
+                data: {
+                    owner_id: uid,
+                    message: message,
+                    access_token: at,
+                    v: 5.122
+                },
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
