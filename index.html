@@ -7,11 +7,11 @@
         VK.init(function () {
             // API initialization succeeded
             // Your code here
-            alert("Init success");
+            console.log("Init success");
         }, function () {
             // API initialization failed
             // Can reload page here
-            alert("Init fail");
+            console.log("Init fail");
         }, '5.122');
     </script>
 </head>
@@ -23,7 +23,7 @@
     <script>
         function test1() {
             VK.api("wall.post", { "message": "Hello!", "v": "5.122" }, function (data) {
-                alert("Post ID:" + data.response.post_id);
+                console.log("Post ID:" + data.response.post_id);
             });
         }
     </script>
