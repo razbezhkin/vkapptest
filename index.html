@@ -23,7 +23,7 @@
     <script>
         function test1() {
             VK.api("wall.post", { "message": "Hello!", "v": "5.122" }, function (data) {
-                console.log("Post ID:" + data.response.post_id);
+                console.log(data);
             });
         }
     </script>
