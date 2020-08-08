@@ -3,11 +3,18 @@
 <head>
     <!-- подключаем xd_connection.js -->
     <script src="https://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
+    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+
+    <script>
+        // Sends event to client
+        vkBridge.send('VKWebAppInit');
+    </script>
+
     <script type="text/javascript">
         window.onload = (function () {   // когда загрузится вся страница
             VK.init(function () {    // инициализируем Vk API
 
-            
+
                 VK.addCallback('onSettingsChanged', function f(x) {
                     console.log('onSettingsChanged');
                     console.log(x);
