@@ -8,6 +8,11 @@
     <script>
         // Sends event to client
         vkBridge.send('VKWebAppInit');
+        vkBridge.subscribe(function(x){
+            console.log("vkBridge.subscribe");
+            console.log(x);
+        });
+        connect.send("VKWebAppGetUserInfo", {});
     </script>
 
     <script type="text/javascript">
