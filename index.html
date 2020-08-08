@@ -1,32 +1,29 @@
 <html>
 
 <head>
-    <script src="https://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
-
-    <script type="text/javascript">
-        VK.init(function () {
-            // API initialization succeeded
-            // Your code here
-            console.log("Init success");
-        }, function () {
-            // API initialization failed
-            // Can reload page here
-            console.log("Init fail");
-        }, '5.122');
+    <!-- подключаем xd_connection.js -->
+    <script src="http://vkontakte.ru/js/api/xd_connection.js?2" type="text/javascript"></script>
+    <script type="text/javascript" charset="cp1251">
+        window.onload = (function () {   // когда загрузится вся страница
+            VK.init(function () {    // инициализируем Vk API
+                // изменяем заголовок окна браузера
+                VK.callMethod("setTitle", 'API flapps.ru');
+                // изменяем ширину и высоту элемента IFrame
+                VK.callMethod("resizeWindow", 807, 600);
+                // открываем окно с пользовательскими настройками приложения
+                VK.callMethod("showSettingsBox", 2048);
+                // когда пользователь изменяет настройки приложений
+                VK.addCallback("onSettingsChanged", onSettingsChanged);
+                function onSettingsChanged(settings) {
+                    alert('Настройки изменены: ' + settings);
+                }
+            });
+        });
     </script>
 </head>
 
 <body>
-    <button onclick="test1()">Test1</button>
-
-
-    <script>
-        function test1() {
-            VK.api("wall.post", { "message": "Hello!", "v": "5.122" }, function (data) {
-                console.log(data);
-            });
-        }
-    </script>
+    <div id="info"></div>
 </body>
 
 </html>
