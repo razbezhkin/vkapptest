@@ -1,0 +1,207 @@
+<html>
+<head>
+    <script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
+</head>
+<body>
+<script type="text/javascript">
+  VK.init(function() { 
+    VK.addCallback('onApplicationAdded', function() {
+        console.log('onApplicationAdded');
+    });
+
+    VK.addCallback('onSettingsChanged', function() {
+        console.log('onSettingsChanged');
+    });
+    VK.addCallback('onSettingsCancel', function() {
+        console.log('onSettingsCancel');
+    });
+
+    VK.addCallback('onRequestSuccess', function() {
+        console.log('onRequestSuccess');
+    });
+
+    VK.addCallback('onRequestCancel', function() {
+        console.log('onRequestCancel');
+    });
+
+    VK.addCallback('onRequestFail', function() {
+        console.log('onRequestFail');
+    });
+
+    VK.addCallback('onOrderCancel', function() {
+        console.log('onOrderCancel');
+    });
+
+    VK.addCallback('onOrderSuccess', function(order_id) {
+        console.log('onOrderSuccess, order_id=' + order_id);
+    });
+
+    VK.addCallback('onOrderFail', function(erroc_code) {
+        console.log('onOrderFail, error_code=' + error_code);
+    });
+
+    VK.addCallback('onSubscriptionCancel', function() {
+        console.log('onSubscriptionCancel');
+    });
+
+    VK.addCallback('onSubscriptionSuccess', function(subscription_id) {
+        console.log('onSubscriptionSuccess, order_id=' + subscription_id);
+    });
+
+    VK.addCallback('onSubscriptionFail', function(errorCode) {
+        console.log('onSubscriptionFail, error_code=' + errorCode);
+    });
+
+
+    VK.addCallback('onAllowMessagesFromCommunity', function() {
+        console.log('onAllowMessagesFromCommunity');
+    });
+    VK.addCallback('onAllowMessagesFromCommunityCancel', function() {
+        console.log('onAllowMessagesFromCommunity');
+    });
+
+    
+  }, function() { 
+     // API initialization failed 
+     // Can reload page here 
+    }, '5.96');
+
+  function InstallBox() {
+    console.log('Click showInstallBox');
+    VK.callMethod("showInstallBox");
+  };
+
+  function SettingsBox() {
+    console.log('Click showSettingsBox');
+    VK.callMethod("showSettingsBox", document.getElementById("scope").value);
+  };
+
+  function RequestBox() {
+    console.log('Click showRequestBox');
+    VK.callMethod("showRequestBox", document.getElementById("request_id").value, document.getElementById("request_message").value, document.getElementById("request_key").value);
+  };
+    
+   function InviteBox() {
+    console.log('Click showInviteBox');
+    VK.callMethod("showInviteBox");
+  };
+
+  function OrderBox() {
+    console.log('Click showOrderBox');
+    VK.callMethod("showOrderBox", {"type":"item","item":"item1"});
+  }
+
+  function SubscriptionBox() {
+    console.log('Click showSubscriptionBox');
+    VK.callMethod('showSubscriptionBox', 'create', {item: 'item1'});
+  };
+
+  function SetTitle() {
+    console.log('Click setTitle');
+    VK.callMethod("setTitle", document.getElementById("title").value);
+  };
+
+  function InstallPushBox() {
+    console.log('Click showInstallPushBox');
+    VK.callMethod("showInstallPushBox");
+  };
+
+  function AllowMessagesFromCommunityBox() {
+    console.log('Click AllowMessagesFromCommunityBox');
+    VK.callMethod('showAllowMessagesFromCommunityBox', document.getElementById("group_id").value);
+  };
+
+  function wallPost() {
+    console.log('wall.post');
+    //VK.callMethod('showAllowMessagesFromCommunityBox', document.getElementById("group_id").value);
+	  VK.api("wall.post", {"message": document.getElementById("Post").value, "v":"5.100", "attachments": document.getElementById("Attach").value})
+  };
+       
+  
+  
+</script>
+<hr>
+<!-- showInstallBox -->
+<button onclick="InstallBox()" class="button">showInstallBox</button>
+<hr>
+<!-- showSettingsBox -->
+<div class="text">scope:</div>
+<input type="text" value="8214" id="scope"><br>
+<button onclick="SettingsBox()" class="button">showSettingsBox</button>
+<hr>
+<!-- showRequestBox -->
+<div class="text">request_id:</div>
+<input type="text" value="1" id="request_id">
+<div class="text">request_message:</div>
+<input type="text" value="Test!" id="request_message">
+<div class="text">request_key:</div>
+<input type="text" value="test_key" id="request_key"><br>
+<button onclick="RequestBox()" class="button">showRequestBox</button>
+<hr>
+
+<!-- showInviteBox -->
+<button onclick="InviteBox()" class="button">showInviteBox</button>
+
+<hr>
+<!-- showOrderBox -->
+<button onclick="OrderBox()" class="button">showOrderBox</button>
+
+<hr>
+
+<!-- showOrderBox -->
+<button onclick="SubscriptionBox()" class="button">showSubscriptionBox (create)</button>
+
+<hr>
+<!-- setTitle -->
+<div class="text">title:</div>
+<input type="text" value="test_title" id="title"><br>
+<button onclick="SetTitle()" class="button">setTitle</button>
+<hr>
+
+<!-- showInstallPushBox -->
+<button onclick="InstallPushBox()" class="button">showInstallPushBox</button>
+<hr>
+    
+<div class="text">group_id</div>
+	<input type="text" value="170180028" id="group_id"><br>
+	<button onclick="AllowMessagesFromCommunityBox()" class="button">showAllowMessagesFromCommunityBox</button>
+	
+<hr>
+	
+<div class="text">Post</div>
+	<input type="text" value="" id="Post"><br>
+	<div class="text">Attach</div>
+	<input type="text" value="" id="Attach"><br>
+	<button onclick="wallPost()" class="button">wall.post</button>
+
+<style>.button{
+  width: 70%;
+  font-size: 100%;
+  border-radius: 5px;
+    border: 1px solid #666;
+    padding: 5px;
+    background: whitesmoke;
+}
+.button:hover {
+    background: lightgrey;
+ }
+input{
+  font-size: 100%;
+  border-radius: 5px;
+    border: 1px solid #666;
+}
+.block {
+        display: block;
+    }
+.text{
+  font-size: 100%;
+}
+hr{
+  border: 2px solid;
+  margin: 1%;
+  width: 70%;
+}
+
+</style>
+</body>
+</html>
