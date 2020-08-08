@@ -1,10 +1,11 @@
 <html>
+
 <head>
     <!-- подключаем xd_connection.js -->
     <script src="https://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
     <script type="text/javascript">
         window.onload = (function () {   // когда загрузится вся страница
-            VK.init({apiId: 7558964},function () {    // инициализируем Vk API
+            VK.init({ apiId: 7558964 }, function () {    // инициализируем Vk API
                 VK.addCallback('onSettingsChanged', function f(x) {
                     console.log('onSettingsChanged');
                     console.log(x);
@@ -20,11 +21,11 @@
                 VK.callMethod("showSettingsBox", 5);
 
 
-                VK.api('getUserSettings', function(data){
+                VK.api('getUserSettings', function (data) {
                     console.log("getUserSettings");
                     console.log(data);
                 });
-                
+
             }, function () {
                 console.log('init failed');
             },
@@ -32,7 +33,15 @@
         });
     </script>
 </head>
+
 <body>
     <div id="info"></div>
+
+    <div id="vk_like"></div>
+    <script type="text/javascript">
+        VK.Widgets.Like('vk_like');
+    </script>
+
 </body>
+
 </html>
