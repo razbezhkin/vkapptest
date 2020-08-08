@@ -18,6 +18,12 @@
                 VK.callMethod("resizeWindow", 200, 200);
                 // открываем окно с пользовательскими настройками приложения - НЕ работает
                 VK.callMethod("showSettingsBox", 5);
+
+
+                VK.api('getUserSettings', function(data){
+                    console.log("getUserSettings");
+                    console.log(data);
+                });
                 
             }, function () {
                 console.log('init failed');
