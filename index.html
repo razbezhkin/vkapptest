@@ -1,6 +1,6 @@
 <html>
-
 <head>
+    <script src="https://vk.com/js/api/openapi.js?168" type="text/javascript"></script>
     <!-- подключаем xd_connection.js -->
     <script src="https://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
     <script type="text/javascript">
@@ -13,17 +13,13 @@
 
 
                 console.log('init success');
-                // изменяем заголовок окна браузера
-                console.log(VK.callMethod("setTitle", 'API flapps.ru'));
-                // изменяем ширину и высоту элемента IFrame
-                console.log(VK.callMethod("resizeWindow", 200, 200));
-                // открываем окно с пользовательскими настройками приложения
-                console.log(VK.callMethod("showSettingsBox", 5));
-                // когда пользователь изменяет настройки приложений
-                VK.addCallback("onSettingsChanged", onSettingsChanged);
-                function onSettingsChanged(settings) {
-                    console.log('Настройки изменены: ' + settings);
-                }
+                // изменяем заголовок окна браузера - НЕ работает
+                VK.callMethod("setTitle", 'API flapps.ru');
+                // изменяем ширину и высоту элемента IFrame - работает
+                VK.callMethod("resizeWindow", 200, 200);
+                // открываем окно с пользовательскими настройками приложения - НЕ работает
+                VK.callMethod("showSettingsBox", 5);
+                
             }, function () {
                 console.log('init failed');
             },
@@ -31,9 +27,7 @@
         });
     </script>
 </head>
-
 <body>
     <div id="info"></div>
 </body>
-
 </html>
