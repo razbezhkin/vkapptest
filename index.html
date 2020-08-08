@@ -2,21 +2,24 @@
 
 <head>
     <!-- подключаем xd_connection.js -->
-    <script src="http://vkontakte.ru/js/api/xd_connection.js?2" type="text/javascript"></script>
-    <script type="text/javascript" charset="cp1251">
+    <script src="https://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
+    <script type="text/javascript">
         window.onload = (function () {   // когда загрузится вся страница
             VK.init(function () {    // инициализируем Vk API
+                console.log('init success');
                 // изменяем заголовок окна браузера
-                VK.callMethod("setTitle", 'API flapps.ru');
+                console.log(VK.callMethod("setTitle", 'API flapps.ru'));
                 // изменяем ширину и высоту элемента IFrame
-                VK.callMethod("resizeWindow", 807, 600);
+                console.log(VK.callMethod("resizeWindow", 200, 200));
                 // открываем окно с пользовательскими настройками приложения
-                VK.callMethod("showSettingsBox", 2048);
+                console.log(VK.callMethod("showSettingsBox", 2048));
                 // когда пользователь изменяет настройки приложений
                 VK.addCallback("onSettingsChanged", onSettingsChanged);
                 function onSettingsChanged(settings) {
-                    alert('Настройки изменены: ' + settings);
+                    console.log('Настройки изменены: ' + settings);
                 }
+            },function(){
+                console.log('init failed');
             });
         });
     </script>
