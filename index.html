@@ -6,6 +6,12 @@
     <script type="text/javascript">
         window.onload = (function () {   // когда загрузится вся страница
             VK.init(function () {    // инициализируем Vk API
+                VK.addCallback('onSettingsChanged', function f(x) {
+                    console.log('onSettingsChanged');
+                    console.log(x);
+                });
+
+
                 console.log('init success');
                 // изменяем заголовок окна браузера
                 console.log(VK.callMethod("setTitle", 'API flapps.ru'));
@@ -18,10 +24,10 @@
                 function onSettingsChanged(settings) {
                     console.log('Настройки изменены: ' + settings);
                 }
-            },function(){
+            }, function () {
                 console.log('init failed');
             },
-            '5.122');
+                '5.122');
         });
     </script>
 </head>
