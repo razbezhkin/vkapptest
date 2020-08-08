@@ -12,7 +12,7 @@
                 // изменяем ширину и высоту элемента IFrame
                 console.log(VK.callMethod("resizeWindow", 200, 200));
                 // открываем окно с пользовательскими настройками приложения
-                console.log(VK.callMethod("showSettingsBox", 2048));
+                console.log(VK.callMethod("showSettingsBox", 5));
                 // когда пользователь изменяет настройки приложений
                 VK.addCallback("onSettingsChanged", onSettingsChanged);
                 function onSettingsChanged(settings) {
