@@ -18,6 +18,10 @@
         <textarea id="text" rows=8 cols=100></textarea>
     </div>
 
+    <form id='imguploadform' method="POST" enctype = "multipart/form-data">
+        <input type='file' id='file1' name='file1' />
+    </form>
+    
     <button onclick="test1()">Test1</button>
 
     <script>
@@ -74,6 +78,12 @@
             };
 
             oReq.send(imgBytes);
+        }
+
+        function uploadImageByForm(upload_url)
+        {
+            var file1=document.getElementById("file1");
+            
         }
     </script>
 </body>
