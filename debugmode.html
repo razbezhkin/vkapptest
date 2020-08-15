@@ -1,17 +1,15 @@
 <html>
 
 <head>
-    <script
-    src="https://code.jquery.com/jquery-3.5.1.min.js"
-    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-    crossorigin="anonymous"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
     <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
-    
+
     <script>
         // Sends event to client
         vkBridge.send('VKWebAppInit');
-      </script> 
+    </script>
 </head>
 
 <body>
@@ -19,25 +17,33 @@
     <div>
         <textarea id="text" rows=8 cols=100></textarea>
     </div>
+    <div><img src='https://storage.ufamama.ru/images/cache/rowimages/Sliza_yakimova_23_07_tsf61004131_1-fs.jpg'
+            style='width:50px;' /></div>
+
     <button onclick="test1()">Test1</button>
 
 
     <script>
         function test1() {
 
-            vkBridge.send("VKWebAppGetAuthToken", {"app_id": 7558964, "scope": "photos,wall"}).then(function(x){console.log(x);});
+            vkBridge.send("VKWebAppGetAuthToken", { "app_id": 7558964, "scope": "photos,wall" }).then(function (x) { console.log(x); });
 
             //получить список альбомов
-            vkBridge.send("VKWebAppCallAPIMethod", {"method": "photos.getAlbums","request_id": "32test","params": {"owner_id": "53162159", "v":"5.122","access_token":"4ca3f368029ff493369c005620df05986e0d640282b7cd1abf81d3878008b9ed77919cbc43eecd10acf10"}}).then(function(x){console.log(x);});
+            vkBridge.send("VKWebAppCallAPIMethod", { "method": "photos.getAlbums", "request_id": "32test", "params": { "owner_id": "53162159", "v": "5.122", "access_token": "4ca3f368029ff493369c005620df05986e0d640282b7cd1abf81d3878008b9ed77919cbc43eecd10acf10" } }).then(function (x) { console.log(x); });
 
             //создать альбом, в ответе в id - идентификатор альбома
-            vkBridge.send("VKWebAppCallAPIMethod", {"method": "photos.createAlbum","request_id": "32test","params": {"title": "Ufamama", "v":"5.122","access_token":"4ca3f368029ff493369c005620df05986e0d640282b7cd1abf81d3878008b9ed77919cbc43eecd10acf10"}}).then(function(x){console.log(x);});
+            vkBridge.send("VKWebAppCallAPIMethod", { "method": "photos.createAlbum", "request_id": "32test", "params": { "title": "Ufamama", "v": "5.122", "access_token": "4ca3f368029ff493369c005620df05986e0d640282b7cd1abf81d3878008b9ed77919cbc43eecd10acf10" } }).then(function (x) { console.log(x); });
 
             //получить адрес сервера для загрузки изображений. в ответе в upload_url будет находиться адрес сервера загрузки
-            vkBridge.send("VKWebAppCallAPIMethod", {"method": "photos.getUploadServer","request_id": "32test","params": {"album_id":"274453397","v":"5.122","access_token":"4ca3f368029ff493369c005620df05986e0d640282b7cd1abf81d3878008b9ed77919cbc43eecd10acf10"}}).then(function(x){console.log(x);});
+            vkBridge.send("VKWebAppCallAPIMethod", { "method": "photos.getUploadServer", "request_id": "32test", "params": { "album_id": "274453397", "v": "5.122", "access_token": "4ca3f368029ff493369c005620df05986e0d640282b7cd1abf81d3878008b9ed77919cbc43eecd10acf10" } }).then(function (x) { console.log(x); });
 
             //загрузить изображение на сервер. "https://pu.vk.com/c200728/ss2019/upload.php?act=do_add&mid=53162159&aid=274453397&gid=0&hash=eb49faa251a50c4bd439bfc51ac88e7a&rhash=ad4fe525f756a783793ff9471208552c&swfupload=1&api=1"
+            //https://storage.ufamama.ru/images/cache/rowimages/Sliza_yakimova_23_07_tsf61004131_1-fs.jpg
+            $.ajax(
+                {
 
+                }
+            );
 
         }
     </script>
