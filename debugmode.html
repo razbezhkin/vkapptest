@@ -69,11 +69,22 @@
                 var arrayBuffer = oReq.response; // Note: not oReq.responseText
                 if (arrayBuffer) {
                     var byteArray = new Uint8Array(arrayBuffer);
-                    imgBytes=byteArray;
+                    imgBytes = byteArray;
                 }
             };
 
             oReq.send(null);
+        }
+
+        function uploadImage(upload_url) {
+            var oReq = new XMLHttpRequest();
+            oReq.open("POST", upload_url, true);
+            oReq.onload = function (oEvent) {
+                // Uploaded.
+                consloe.log(oEvent);
+            };
+
+            oReq.send(imgBytes);
         }
     </script>
 </body>
