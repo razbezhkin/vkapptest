@@ -8,7 +8,7 @@
 
     <script>
         // Sends event to client
-        vkBridge.send('VKWebAppInit');
+        vkBridge.send('VKWebAppInit').then(function (x) { console.log(x); });
     </script>
 </head>
 
@@ -17,21 +17,8 @@
     <div>
         <textarea id="text" rows=8 cols=100></textarea>
     </div>
-    <div><img id='mainimg'
-            src='https://storage.ufamama.ru/images/cache/rowimages/Sliza_yakimova_23_07_tsf61004131_1-fs.jpg'
-            style='width:50px;' />
-    </div>
 
     <button onclick="test1()">Test1</button>
-
-    <script>
-        //image loaded
-        var img = document.getElementById("mainimg");
-        img.onload = function (data) {
-            console.log('image loaded');
-            console.log(data);
-        }
-    </script>
 
     <script>
         function test1() {
@@ -60,7 +47,8 @@
 
     <script>
         var imgBytes;
-        function downloadimage() {
+        //скачать изображение с сервера
+        function downloadImage() {
             var oReq = new XMLHttpRequest();
             oReq.open("GET", "/vkapptest/s1200.jpeg", true);
             oReq.responseType = "arraybuffer";
@@ -76,6 +64,7 @@
             oReq.send(null);
         }
 
+        //залить изображение на сервер
         function uploadImage(upload_url) {
             var oReq = new XMLHttpRequest();
             oReq.open("POST", upload_url, true);
