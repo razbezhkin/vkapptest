@@ -9,6 +9,13 @@
     <script>
         // Sends event to client
         vkBridge.send('VKWebAppInit');
+
+        //image loaded
+        var img = document.getElementById("mainimg");
+        img.onload=function(data){
+            console.log('image loaded');
+            console.log(data);
+        }
     </script>
 </head>
 
@@ -17,7 +24,7 @@
     <div>
         <textarea id="text" rows=8 cols=100></textarea>
     </div>
-    <div><img src='https://storage.ufamama.ru/images/cache/rowimages/Sliza_yakimova_23_07_tsf61004131_1-fs.jpg'
+    <div><img id='mainimg' src='https://storage.ufamama.ru/images/cache/rowimages/Sliza_yakimova_23_07_tsf61004131_1-fs.jpg'
             style='width:50px;' /></div>
 
     <button onclick="test1()">Test1</button>
