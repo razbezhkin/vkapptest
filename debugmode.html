@@ -9,13 +9,6 @@
     <script>
         // Sends event to client
         vkBridge.send('VKWebAppInit');
-
-        //image loaded
-        var img = document.getElementById("mainimg");
-        img.onload=function(data){
-            console.log('image loaded');
-            console.log(data);
-        }
     </script>
 </head>
 
@@ -29,6 +22,14 @@
 
     <button onclick="test1()">Test1</button>
 
+    <script>
+        //image loaded
+        var img = document.getElementById("mainimg");
+        img.onload=function(data){
+            console.log('image loaded');
+            console.log(data);
+        }
+    </script>
 
     <script>
         function test1() {
