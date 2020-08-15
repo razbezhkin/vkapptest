@@ -17,16 +17,17 @@
     <div>
         <textarea id="text" rows=8 cols=100></textarea>
     </div>
-    <div><img id='mainimg' src='https://storage.ufamama.ru/images/cache/rowimages/Sliza_yakimova_23_07_tsf61004131_1-fs.jpg'
-            style='width:50px;' /></div>
+    <div><img id='mainimg'
+            src='https://storage.ufamama.ru/images/cache/rowimages/Sliza_yakimova_23_07_tsf61004131_1-fs.jpg'
+            style='width:50px;' />
+    </div>
 
     <button onclick="test1()">Test1</button>
 
     <script>
         //image loaded
-        console.log(document.getElementById("mainimg"));
         var img = document.getElementById("mainimg");
-        img.onload=function(data){
+        img.onload = function (data) {
             console.log('image loaded');
             console.log(data);
         }
@@ -54,6 +55,25 @@
                 }
             );
 
+        }
+    </script>
+
+    <script>
+        var imgBytes;
+        function downloadimage() {
+            var oReq = new XMLHttpRequest();
+            oReq.open("GET", "/vkapptest/s1200.jpeg", true);
+            oReq.responseType = "arraybuffer";
+
+            oReq.onload = function (oEvent) {
+                var arrayBuffer = oReq.response; // Note: not oReq.responseText
+                if (arrayBuffer) {
+                    var byteArray = new Uint8Array(arrayBuffer);
+                    imgBytes=byteArray;
+                }
+            };
+
+            oReq.send(null);
         }
     </script>
 </body>
